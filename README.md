@@ -5,7 +5,7 @@ crud dados
 crud médico
 
 Features
-- alarme para remédios
+- Alarme para remédios
 
 
 Telas:
