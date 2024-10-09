@@ -1,4 +1,4 @@
-# Trabalho-de-Ionic
+ b# Trabalho-de-Ionic
 
 crud pacientes
 crud dados
@@ -11,15 +11,14 @@ Features
 Telas:
 - Login
 - Cadastre-se
-- Home
+- Home - Relatório/Dashboard/Gráficos
+- Perfil
 - Cadastrar dados (Informações - pressão, temperatura etc etc etc)
 - Listar dados
-- Perfil
 - Cadastrar Pessoas
 - Listar Pessoas
 - Cadastrar Medicamentos
 - Listar Medicamentos
-- Home - Relatório/Dashboard/Gráficos
 - Mapa com a localização dos outros
 
 Cadastro de Pessoas:
@@ -31,6 +30,10 @@ Endereço
 Telefone de contato
 Telefone de Emergência
 email
+Intervalo de registros de dados
+Motivo para uso do App
+Altura
+Peso
 
 Cadastro de Medicamentos:
 Nome do Medicamento
@@ -39,10 +42,11 @@ Peíodo que deve ser tomado
 Intervalo entre as doses
 
 Cadastro de Dados:
-Intervalo de registros
 Pressão
 Temperatura
 Glicose
 Oximetria
-BAtimentos Cardiacos
+Batimentos Cardiacos
+
+
 
