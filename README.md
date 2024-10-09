@@ -1,9 +1,4 @@
  # Trabalho-de-Ionic
-
-crud pacientes
-crud dados
-crud médico
-
 Features
 - Alarme para remédios
 
