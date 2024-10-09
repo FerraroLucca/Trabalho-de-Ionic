@@ -12,7 +12,7 @@ Telas:
 - Login
 - Cadastre-se
 - Home
-- Cadastrar dados
+- Cadastrar dados (Informações - pressão, temperatura etc etc etc)
 - Listar dados
 - Perfil
 - Cadastrar Pessoas
@@ -20,3 +20,29 @@ Telas:
 - Cadastrar Medicamentos
 - Listar Medicamentos
 - Home - Relatório/Dashboard/Gráficos
+- Mapa com a localização dos outros
+
+Cadastro de Pessoas:
+Nome
+dt. Nascimento
+RG
+CPF
+Endereço
+Telefone de contato
+Telefone de Emergência
+email
+
+Cadastro de Medicamentos:
+Nome do Medicamento
+"Principio ativo" - nome científico do remédio
+Peíodo que deve ser tomado
+Intervalo entre as doses
+
+Cadastro de Dados:
+Intervalo de registros
+Pressão
+Temperatura
+Glicose
+Oximetria
+BAtimentos Cardiacos
+
