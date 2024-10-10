@@ -1,6 +1,10 @@
  # Trabalho-de-Ionic
+
+Saúde e Bem Estar da OMS
+ 
 Features
 - Alarme para remédios
+- Notificação para lembrar de preencher as listas
 
 Telas:
 - Login
