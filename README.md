@@ -2,7 +2,6 @@
 Features
 - Alarme para remédios
 
-
 Telas:
 - Login
 - Cadastre-se
@@ -10,21 +9,26 @@ Telas:
 - Perfil
 - Cadastrar dados (Informações - pressão, temperatura etc etc etc)
 - Listar dados
-- Cadastrar Pessoas
+- Cadastrar Usuário
 - Listar Pessoas
 - Cadastrar Medicamentos
 - Listar Medicamentos
 - Mapa com a localização dos outros
 
-Cadastro de Pessoas:
+Cadastre-se:
 Nome
+Email
+Senha
+Tipo de usuário
+
+Cadastro de Usuário:
+Foto
 dt. Nascimento
 RG
 CPF
 Endereço
 Telefone de contato
 Telefone de Emergência
-email
 Intervalo de registros de dados
 Motivo para uso do App
 Altura
@@ -42,6 +46,12 @@ Temperatura
 Glicose
 Oximetria
 Batimentos Cardiacos
+Peso periódicamente (1 vez por mês)
+Alguma dor?
+Indisposição?
+Como está se sentindo?
+Observação?
+
 
 
 
