@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Calculadora de Área</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" padding>
+  <ion-item>
+    <ion-label position="floating">Base</ion-label>
+    <ion-input [(ngModel)]="base" type="number"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Altura</ion-label>
+    <ion-input [(ngModel)]="altura" type="number"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="calcularArea()">Calcular Área</ion-button>
+
+  <ion-item>
+    <ion-label>Resultado:</ion-label>
+    <ion-note>{{ resultado }}</ion-note>
+  </ion-item>
+</ion-content>
