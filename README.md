@@ -1,12 +1,14 @@
- # Trabalho-de-Ionic
+# Trabalho-de-Ionic
 
 Saúde e Bem Estar da OMS
- 
+
 Features
+
 - Alarme para remédios
 - Notificação para lembrar de preencher as listas
 
 Telas:
+
 - Login
 - Cadastre-se
 - Home - Relatório/Dashboard/Gráficos
@@ -55,7 +57,3 @@ Alguma dor?
 Indisposição?
 Como está se sentindo?
 Observação?
-
-
-
-
