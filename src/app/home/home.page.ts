@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Usuario } from 'src/types';
+import { Usuario } from 'src/@types';
 import { FirebaseService } from '../services/firebase.service';
 
 @Component({

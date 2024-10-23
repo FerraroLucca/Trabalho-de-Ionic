@@ -4,16 +4,23 @@ export type Usuario = {
     nome: string,
     email: string,
     senha: string,
-    tipoUser: "PACIENTE" | "ACOMPANHANTE" | "ADMINISTRADOR"
-    dataDeNacimento: string,
-    rg: string,
+    tipoUser: TipoUser,
+    dataDeNascimento: string,
+    rg?: string,
     cpf: string,
     telefone: string,
     telefoneEmergencia?: string,
-    altura: string,
-    peso: string
-    endereco: Endereco
+    altura?: string,
+    peso?: string
+    endereco?: Endereco
 }
+
+export type TipoUser = typeof TipoUser[keyof typeof TipoUser];
+export const TipoUser = {
+    PACIENTE: 'PACIENTE',
+    ACOMPANHANTE: 'ACOMPANHANTE', 
+    ADMINISTRADOR: 'ADMINISTRADOR'
+} as const;
 
 type Endereco = {
     cep?: string,
@@ -27,6 +34,7 @@ type Endereco = {
 
 export type Medicoes = {
     id?: number,
+    data: Date,
     pressaoSistolica: number,
     pressaoDiatolica: number,
     temperatura: number, 

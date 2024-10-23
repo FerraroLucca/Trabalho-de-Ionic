@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { addDoc, collection, getDocs, getFirestore, query, where } from "firebase/firestore";
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
-import { Response, Usuario } from 'src/types';
+import { Response, Usuario } from 'src/@types';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -33,20 +33,20 @@ export class FirebaseService {
         email: user.email,
         senha: user.senha,
         tipoUser: user.tipoUser,
-        dataDeNacimento: user.dataDeNacimento,
-        rg: user.rg,
+        dataDeNacimento: user.dataDeNascimento,
+        rg: user.rg ?? "",
         cpf: user.cpf,
         telefone: user.telefone,
         telefoneEmergencia: user.telefoneEmergencia,
-        altura: user.altura,
-        peso: user.peso,
-        cep: user.endereco.cep ?? "",
-        logradouro: user.endereco.logradouro,
-        numero: user.endereco.numero,
-        complemento: user.endereco.complemento ?? "",
-        bairro: user.endereco.bairro ?? "",
-        cidade: user.endereco.cidade,
-        estado: user.endereco.estado
+        altura: user.altura ?? "",
+        peso: user.peso ?? "",
+        cep: user.endereco?.cep ?? "",
+        logradouro: user.endereco?.logradouro,
+        numero: user.endereco?.numero,
+        complemento: user.endereco?.complemento ?? "",
+        bairro: user.endereco?.bairro ?? "",
+        cidade: user.endereco?.cidade,
+        estado: user.endereco?.estado
       });
   
       return this.criarResposta(200, "Cadastro realizado com sucesso", `Id Usuário: ${docRef.id}`);
@@ -106,7 +106,7 @@ export class FirebaseService {
   
     } catch (error) {
       console.error('Erro ao fazer upload da imagem: ', error);
-      return null;  // Retornar null em caso de erro
+      return null;  
     }
   }  
 
