@@ -1,0 +1,81 @@
+<!-- Header -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Cadastrar Medicamentos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Menu Sidebar -->
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="danger">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item [routerLink]="['/cadastrar-pessoas']"
+        >Cadastrar Pessoas</ion-item
+      >
+      <ion-item [routerLink]="['/cadastrar-medicamentos']"
+        >Cadastrar Medicamentos</ion-item
+      >
+      <ion-item [routerLink]="['/mapa']">Mapa</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- Formulário de Cadastro de Medicamentos -->
+<ion-content class="ion-padding" id="main-content">
+  <form>
+    <ion-item>
+      <ion-label position="stacked">Nome do Medicamento</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Princípio Ativo</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Nome Científico</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Período que Deve Ser Tomado</ion-label>
+      <ion-input type="text" placeholder="Ex: 7 dias" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Intervalo entre as Doses</ion-label>
+      <ion-input type="text" placeholder="Ex: 8 horas" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Quantidade de Doses Diárias</ion-label>
+      <ion-input type="number" min="1" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Via de Administração</ion-label>
+      <ion-select required>
+        <ion-select-option value="oral">Oral</ion-select-option>
+        <ion-select-option value="injetável">Injetável</ion-select-option>
+        <ion-select-option value="tópica">Tópica</ion-select-option>
+        <ion-select-option value="inalatória">Inalatória</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Observações</ion-label>
+      <ion-textarea placeholder="Observações adicionais"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="full" type="submit">Cadastrar Medicamento</ion-button>
+  </form>
+</ion-content>

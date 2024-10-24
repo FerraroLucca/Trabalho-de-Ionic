@@ -1,0 +1,154 @@
+<!-- Header -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Cadastrar Pessoas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Menu Sidebar -->
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="danger">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item [routerLink]="['/cadastrar-pessoas']"
+        >Cadastrar Pessoas</ion-item
+      >
+      <ion-item [routerLink]="['/cadastrar-medicamentos']"
+        >Cadastrar Medicamentos</ion-item
+      >
+      <ion-item [routerLink]="['/mapa']">Mapa</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- Formulário de Cadastro de Geral -->
+<ion-content class="ion-padding" id="main-content">
+  <form>
+    <ion-item>
+      <ion-label position="stacked">Nome Completo</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">E-mail</ion-label>
+      <ion-input type="email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Senha</ion-label>
+      <ion-input type="password" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Confirmação de Senha</ion-label>
+      <ion-input type="password" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Foto</ion-label>
+      <ion-input type="file" accept="image/*"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Data de Nascimento</ion-label>
+      <ion-input type="date" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">RG</ion-label>
+      <ion-input
+        type="text"
+        placeholder="Ex: 12.345.678-9"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">CPF</ion-label>
+      <ion-input
+        type="text"
+        placeholder="Ex: 123.456.789-00"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Endereço</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Telefone de Contato</ion-label>
+      <ion-input
+        type="tel"
+        placeholder="Ex: (99) 99999-9999"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Tipo de Usuário</ion-label>
+      <ion-select required>
+        <ion-select-option value="paciente">Paciente</ion-select-option>
+        <ion-select-option value="medico">Médico</ion-select-option>
+        <ion-select-option value="acompanhante">Acompanhante</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Formulário de Cadastro de Paciente -->
+    <ion-item>
+      <ion-label position="stacked">Telefone de Emergência</ion-label>
+      <ion-input
+        type="tel"
+        placeholder="Ex: (99) 99999-9999"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Altura (cm)</ion-label>
+      <ion-input type="number" min="0" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Peso (kg)</ion-label>
+      <ion-input type="number" min="0" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Motivo para o uso do APP</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <!-- Formulário de Cadastro de Médico -->
+    <ion-item>
+      <ion-label position="stacked"
+        >Conselho Regional de Medicina (CRM)</ion-label
+      >
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Ano de Formação</ion-label>
+      <ion-input type="number" min="1900" max="2099" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Instituição de Formação</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Especialidade</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+    <ion-button expand="full" type="submit">Cadastrar Pessoa</ion-button>
+  </form>
+</ion-content>
