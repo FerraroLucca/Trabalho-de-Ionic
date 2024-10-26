@@ -1,25 +1,21 @@
 export type Usuario = {
-    id?: number,
     foto?: string,
     nome: string,
     email: string,
     senha: string,
-    tipoUser: TipoUser,
-    dataDeNascimento: string,
-    rg?: string,
+    tipoUser?: TipoUser,
+    dataDeNacimento: string,
+    rg: string,
     cpf: string,
     telefone: string,
-    telefoneEmergencia?: string,
-    altura?: string,
-    peso?: string
-    endereco?: Endereco
+    endereco: Endereco
 }
 
 export type TipoUser = typeof TipoUser[keyof typeof TipoUser];
 export const TipoUser = {
     PACIENTE: 'PACIENTE',
     ACOMPANHANTE: 'ACOMPANHANTE', 
-    ADMINISTRADOR: 'ADMINISTRADOR'
+    MEDICO: 'MEDICO'
 } as const;
 
 type Endereco = {
@@ -32,9 +28,32 @@ type Endereco = {
     estado: string
 }
 
-export type Medicoes = {
-    id?: number,
-    data: Date,
+export type Acompanhante = {
+    id?: string,
+    usuario: Usuario,
+}
+
+export type Paciente = {
+    id?: string,
+    usuario: Usuario,
+    altura: number,
+    peso: number,
+    telefoneEmergencia: string,
+    motivoUsoApp: string
+}
+
+export type Medico = {
+    id?: string,
+    usuario: Usuario,
+    crm: string,
+    instituicaoFormacao: string,
+    anoFormacao: number,
+    especialidade: string
+}
+
+export type Medicao = {
+    id?: string,
+    idPaciente: string,
     pressaoSistolica: number,
     pressaoDiatolica: number,
     temperatura: number, 
@@ -45,14 +64,15 @@ export type Medicoes = {
     obersavacoesDor?: string, 
     indisposição: boolean,
     observacoes?: string
+    dataMedicao: Date
 }
 
 export type RelacaoPacienteAcompanhante = {
-    id?: number,
-    parentesco: string,
-    idPaciente ?: number,
-    idAcompanhante: number,
-    dataRelacionamente: Date,
+    id?: string,
+    nivelRelacionamento: string,
+    idPaciente: string,
+    idAcompanhante: string,
+    dataRelacionamento: Date,
     status: boolean
 }
 
