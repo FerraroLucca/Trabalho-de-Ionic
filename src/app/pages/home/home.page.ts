@@ -14,28 +14,28 @@ export class HomePage {
   selectedFile: File | null = null;
   user: Paciente = {
     usuario: {
-      foto: "gs://ionic-fa850.appspot.com/images/Captura de tela 2024-10-20 171036.png",
-      nome: "Guilherme",
-      email: "Guilherme@gmail.com",
-      senha: "123456",
-      dataDeNacimento: "01/08/2002",
-      rg: "00.000.000-00",
-      cpf: "000.000.000-00",
-      telefone: "(11) 00000-0000",
+      foto: 'gs://ionic-fa850.appspot.com/images/Captura de tela 2024-10-20 171036.png',
+      nome: 'Guilherme',
+      email: 'Guilherme@gmail.com',
+      senha: '123456',
+      dataDeNacimento: '01/08/2002',
+      rg: '00.000.000-00',
+      cpf: '000.000.000-00',
+      telefone: '(11) 00000-0000',
       endereco: {
-        cep: "00000-000",
-        logradouro: "Rua 1",
+        cep: '00000-000',
+        logradouro: 'Rua 1',
         numero: 3,
-        bairro: "Jardim Ingá",
-        cidade: "São Paulo",
-        estado: "SP"
-      }
+        bairro: 'Jardim Ingá',
+        cidade: 'São Paulo',
+        estado: 'SP',
+      },
     },
-    telefoneEmergencia: "(11) 00000-0000",
+    telefoneEmergencia: '(11) 00000-0000',
     altura: 171,
     peso: 80,
-    motivoUsoApp: "Por eu quero"
-  }
+    motivoUsoApp: 'Por eu quero',
+  };
 
   constructor(private firebaseService: FirebaseService) {}
 
@@ -50,26 +50,34 @@ export class HomePage {
 
   async verificarUsuarios() {
     // this.users = await this.firebaseService.getUsers();
-    const user = await this.firebaseService.getUser(TipoUser.PACIENTE, "cpf", "000.000.000-00");
+    const user = await this.firebaseService.getUser(
+      TipoUser.PACIENTE,
+      'cpf',
+      '000.000.000-00'
+    );
     console.log(user);
   }
 
-  async login(){
-    const login = await this.firebaseService.realizarLogin(this.email, this.senha);
+  async login() {
+    const login = await this.firebaseService.realizarLogin(
+      this.email,
+      this.senha
+    );
     console.log(login);
   }
 
   onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0]; 
+    this.selectedFile = event.target.files[0];
   }
 
   async uploadImage() {
     if (this.selectedFile) {
-      const URLImage = await this.firebaseService.uploadImageStorage(this.selectedFile);
-      return 
+      const URLImage = await this.firebaseService.uploadImageStorage(
+        this.selectedFile
+      );
+      return;
     } else {
       console.log('Nenhuma imagem foi selecionada');
     }
   }
-
 }

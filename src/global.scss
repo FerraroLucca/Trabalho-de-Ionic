@@ -10,6 +10,11 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
+
+#map {
+  height: 100%;
+}
+
 @import "@ionic/angular/css/core.css";
 
 /* Basic CSS for apps built with Ionic */

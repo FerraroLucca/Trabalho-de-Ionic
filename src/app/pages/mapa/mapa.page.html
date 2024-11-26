@@ -26,4 +26,16 @@
       <ion-item [routerLink]="['/mapa']">Mapa</ion-item>
     </ion-list>
   </ion-content>
+
+  <ion-content [fullscreen]="true">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Geolocalização com Leaflet</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <div id="map" style="height: 100%"></div>
+    </ion-content>
+  </ion-content>
 </ion-menu>

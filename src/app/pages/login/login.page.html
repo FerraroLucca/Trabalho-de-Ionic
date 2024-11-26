@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [fullscreen]="true">
+  <div class="login-container">
+    <img src="assets/images/logo.png" alt="Logo" class="logo" />
+
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input type="email" placeholder="Digite seu email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Senha</ion-label>
+      <ion-input type="password" placeholder="Digite sua senha"></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" class="login-button">Entrar</ion-button>
+
+    <div class="register-link">
+      <p>
+        Não tem uma conta?
+        <a routerLink="/cadastrar-pessoas">Cadastre-se</a>
+      </p>
+    </div>
+  </div>
+</ion-content>

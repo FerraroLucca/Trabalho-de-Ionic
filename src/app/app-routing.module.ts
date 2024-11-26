@@ -31,6 +31,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/mapa/mapa.module').then((m) => m.MapaPageModule),
   },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./pages/login/login.module').then((m) => m.LoginPageModule),
+  },
 ];
 
 @NgModule({

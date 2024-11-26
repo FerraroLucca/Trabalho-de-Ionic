@@ -57,3 +57,23 @@ ion-button {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adicionar sombra */
   border-radius: 8px; /* Bordas arredondadas */
 }
+
+/* Estilo do formulário */
+.health-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Espaçamento entre os campos */
+  margin-top: 2rem; /* Espaçamento do topo */
+}
+
+.health-form ion-item {
+  --padding-start: 0; /* Remove espaçamento lateral interno */
+}
+
+.health-form ion-button.submit-button {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adiciona sombra */
+}
