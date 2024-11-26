@@ -11,35 +11,77 @@
 <!-- Menu Sidebar -->
 <ion-menu contentId="main-content">
   <ion-header>
-    <ion-toolbar color="danger">
+    <ion-toolbar>
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
     <ion-list>
-      <ion-item [routerLink]="['/cadastrar-pessoas']"
-        >Cadastrar Pessoas</ion-item
-      >
-      <ion-item [routerLink]="['/cadastrar-medicamentos']"
-        >Cadastrar Medicamentos</ion-item
-      >
+      <ion-item [routerLink]="['/cadastrar-medicamentos']">
+        Cadastrar Medicamentos
+      </ion-item>
       <ion-item [routerLink]="['/mapa']">Mapa</ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>
 
 <!-- Main Content -->
-<ion-content [fullscreen]="true" class="ion-padding" id="main-content">
-  <img src="assets/images/logoComSlogan.png" alt="Logo" style="width: 50rem" />
-  <div id="container">
-    <ion-button color="danger" (click)="addUser()">Add User</ion-button>
-    <ion-button color="danger" (click)="verificarUsuarios()"
-      >Ver User</ion-button
-    >
-    <ion-button color="danger" (click)="login()">Login</ion-button>
+<ion-content class="ion-padding" id="main-content">
+  <!-- Formulário -->
+  <form class="">
+    <ion-item>
+      <ion-label position="stacked">Pressão</ion-label>
+      <ion-input type="text" placeholder="Digite os valores"></ion-input>
+    </ion-item>
 
-    <ion-button color="danger" (click)="uploadImage()"
-      >Upload Imagem</ion-button
-    >
-  </div>
+    <ion-item>
+      <ion-label position="stacked">Temperatura</ion-label>
+      <ion-input type="text" placeholder="Digite a temperatura"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Glicose</ion-label>
+      <ion-input
+        type="text"
+        placeholder="Digite os níveis de glicose"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Oximetria</ion-label>
+      <ion-input
+        type="text"
+        placeholder="Digite os níveis de oxigênio"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Batimentos Cardíacos</ion-label>
+      <ion-input type="text" placeholder="Digite os batimentos"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Peso</ion-label>
+      <ion-input type="text" placeholder="Digite o peso"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Indisposição?</ion-label>
+      <ion-textarea placeholder="Descreva"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Como está se sentindo?</ion-label>
+      <ion-textarea placeholder="Descreva"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Observação</ion-label>
+      <ion-textarea placeholder="Digite suas observações"></ion-textarea>
+    </ion-item>
+
+    <div class="button-container">
+      <ion-button expand="block" class="button-form"> Enviar </ion-button>
+    </div>
+  </form>
 </ion-content>

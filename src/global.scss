@@ -10,6 +10,11 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
+
+#map {
+  height: 100%;
+}
+
 @import "@ionic/angular/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
@@ -35,3 +40,119 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5; /* Background padrão para toda a aplicação */
+  color: #333333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Centralizar logo */
+.logo {
+  display: block;
+  margin: 0 auto;
+  max-width: 300px;
+  height: auto;
+}
+/* Login container */
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form items */
+ion-item {
+  --background: transparent;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+ion-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000; /* Labels em preto */
+}
+
+ion-input {
+  --color: #000000; /* Texto digitado em preto */
+  --placeholder-color: #000000; /* Placeholders em preto */
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* Espaçamento entre os botões */
+  margin-top: 2rem;
+}
+
+ion-button {
+  width: 90%; /* Preencher quase toda a largura */
+  font-size: 1.1rem; /* Aumentar tamanho do texto */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adicionar sombra */
+  border-radius: 8px; /* Bordas arredondadas */
+}
+
+.login {
+  max-width: 300px; /* Limita o tamanho do botão para manter o design */
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  --background: #007bff; /* Azul */
+  --background-hover: #0056b3;
+  --color: #ffffff;
+  border-radius: 8px;
+}
+
+/* Register link */
+.register-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.register-link p {
+  font-size: 14px;
+  color: #555555;
+}
+
+.register-link a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* Centralizar logo */
+.logo {
+  display: block;
+  margin: 0 auto;
+  max-width: 300px;
+  height: auto;
+}
+
+/* Estilizar container dos botões */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* Espaçamento entre os botões */
+  margin-top: 2rem;
+}
+
+/* Melhorar os botões */
+.button-form {
+  width: 90%; /* Preencher quase toda a largura */
+  font-size: 1.1rem; /* Aumentar tamanho do texto */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adicionar sombra */
+  border-radius: 8px; /* Bordas arredondadas */
+}

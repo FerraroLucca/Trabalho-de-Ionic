@@ -11,15 +11,12 @@
 <!-- Menu Sidebar -->
 <ion-menu contentId="main-content">
   <ion-header>
-    <ion-toolbar color="danger">
+    <ion-toolbar>
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
     <ion-list>
-      <ion-item [routerLink]="['/cadastrar-pessoas']"
-        >Cadastrar Pessoas</ion-item
-      >
       <ion-item [routerLink]="['/cadastrar-medicamentos']"
         >Cadastrar Medicamentos</ion-item
       >
@@ -28,22 +25,30 @@
   </ion-content>
 </ion-menu>
 
-<!-- Formulário de Cadastro de Medicamentos -->
+<!-- Main Content -->
 <ion-content class="ion-padding" id="main-content">
-  <form>
+  <form class="">
     <ion-item>
       <ion-label position="stacked">Nome do Medicamento</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input type="text" placeholder="Digite o nome" required></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Princípio Ativo</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input
+        type="text"
+        placeholder="Digite o princípio ativo"
+        required
+      ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Nome Científico</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input
+        type="text"
+        placeholder="Digite o nome científico"
+        required
+      ></ion-input>
     </ion-item>
 
     <ion-item>
@@ -58,12 +63,17 @@
 
     <ion-item>
       <ion-label position="stacked">Quantidade de Doses Diárias</ion-label>
-      <ion-input type="number" min="1" required></ion-input>
+      <ion-input
+        type="number"
+        min="1"
+        placeholder="Digite a quantidade"
+        required
+      ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Via de Administração</ion-label>
-      <ion-select required>
+      <ion-select placeholder="Selecione uma opção" required>
         <ion-select-option value="oral">Oral</ion-select-option>
         <ion-select-option value="injetável">Injetável</ion-select-option>
         <ion-select-option value="tópica">Tópica</ion-select-option>
@@ -73,9 +83,13 @@
 
     <ion-item>
       <ion-label position="stacked">Observações</ion-label>
-      <ion-textarea placeholder="Observações adicionais"></ion-textarea>
+      <ion-textarea placeholder="Digite as observações"></ion-textarea>
     </ion-item>
 
-    <ion-button expand="full" type="submit">Cadastrar Medicamento</ion-button>
+    <div class="button-container">
+      <ion-button expand="block" class="button-form" type="submit">
+        Cadastrar Medicamento
+      </ion-button>
+    </div>
   </form>
 </ion-content>

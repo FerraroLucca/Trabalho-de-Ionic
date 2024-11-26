@@ -13,8 +13,8 @@ import { CadastrarPessoasPage } from './cadastrar-pessoas.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CadastrarPessoasPageRoutingModule
+    CadastrarPessoasPageRoutingModule,
   ],
-  declarations: [CadastrarPessoasPage]
+  declarations: [CadastrarPessoasPage],
 })
 export class CadastrarPessoasPageModule {}
