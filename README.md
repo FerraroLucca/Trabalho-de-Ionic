@@ -12,16 +12,21 @@ Medição Diária
 Registro de dados diários do paciente, como sinais vitais e outras informações relevantes.
 Menu de Funcionalidades
 
-Cadastro de Medicamentos: Adicione os medicamentos que o paciente está tomando.
-Listagem de Medicamentos: Visualize todos os medicamentos cadastrados.
-Mapa em Tempo Real: Acompanhe a localização do paciente para situações de emergência.
-Acessos Personalizados
+**Cadastro de Medicamentos:** Adicione os medicamentos que o paciente está tomando.
 
+**Listagem de Medicamentos:** Visualize todos os medicamentos cadastrados.
+
+**Mapa em Tempo Real:** Acompanhe a localização do paciente para situações de emergência.
+
+**Acessos Personalizados**
 Usuários diferentes possuem acessos e permissões específicos:
 Médicos: Podem visualizar e gerenciar dados de vários pacientes.
 Pacientes: Podem registrar suas informações e consultar suas próprias medições.
 Acompanhantes: Podem monitorar informações específicas e localização do paciente.
-Passo a Passo para Utilização
+
+
+**Passo a Passo para Utilização**
+
 Login
 
 Acesse a aplicação e clique em Criar Conta.
