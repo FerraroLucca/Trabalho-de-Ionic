@@ -2,7 +2,7 @@
 
 Este projeto tem como objetivo auxiliar o monitoramento de pacientes com funcionalidades como registro diário de dados, controle de medicamentos e localização em tempo real, sendo especialmente útil para pacientes com necessidades especiais como Alzheimer.
 
-Funcionalidades Principais
+## Funcionalidades Principais
 Login e Cadastro
 
 O professor deve iniciar criando um novo cadastro.
