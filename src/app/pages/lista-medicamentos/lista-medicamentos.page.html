@@ -1,0 +1,64 @@
+<!-- Header -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Lista de Medicamentos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Menu Sidebar -->
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item [routerLink]="['/cadastrar-medicamentos']"
+        >Cadastrar Medicamentos</ion-item
+      >
+      <ion-item [routerLink]="['/mapa']">Mapa</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-content>
+  <ion-spinner *ngIf="carregando"></ion-spinner>
+
+  <div *ngIf="erro" class="erro">{{ erro }}</div>
+
+  <table
+    *ngIf="!carregando && medicamentos.length > 0"
+    class="medicamentos-tabela"
+  >
+    <thead>
+      <tr>
+        <th>Nome do Medicamento</th>
+        <th>Princípio Ativo</th>
+        <th>Período Tomado (dias)</th>
+        <th>Intervalo entre Doses (horas)</th>
+        <th>Quantidade Diária</th>
+        <th>Via de Administração</th>
+        <th>Observações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let medicamento of medicamentos">
+        <td>{{ medicamento.nomeMedicamento }}</td>
+        <td>{{ medicamento.principioAtivo }}</td>
+        <td>{{ medicamento.periodoTomado }}</td>
+        <td>{{ medicamento.intervaloDoses }}</td>
+        <td>{{ medicamento.quantidadeDosesDiarias }}</td>
+        <td>{{ medicamento.viaAdministracao }}</td>
+        <td>{{ medicamento.observacoes }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!carregando && medicamentos.length === 0" class="nenhum-dado">
+    Nenhum medicamento encontrado.
+  </div>
+</ion-content>

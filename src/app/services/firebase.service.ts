@@ -441,12 +441,13 @@ export class FirebaseService {
     }
   }
 
-  async buscarMedicamentosUsuario(idUsuario: string) {
+  async buscarMedicamentosUsuario(idUsuario: string): Promise<any> {
     try {
       const q = query(
         collection(this.db, this.collectionMedicamento),
-        where(idUsuario, '==', idUsuario)
+        where('idUsuario', '==', idUsuario)
       );
+
       const querySnapshot = await getDocs(q);
       const medicamentos: Medicamento[] = querySnapshot.docs.map((doc) => ({
         id: doc.id,

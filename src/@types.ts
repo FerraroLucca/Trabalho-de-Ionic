@@ -31,6 +31,7 @@ export const TipoUser = {
   PACIENTE: 'PACIENTE',
   ACOMPANHANTE: 'ACOMPANHANTE',
   MEDICO: 'MEDICO',
+  MEDICAMENTO: 'MEDICAMENTO',
 } as const;
 
 type Endereco = {
