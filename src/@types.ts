@@ -69,16 +69,14 @@ export type Medico = {
 export type Medicao = {
   id?: string;
   idPaciente: string;
-  pressaoSistolica: number;
-  pressaoDiatolica: number;
-  temperatura: number;
-  glicose: number;
-  oximetria: number;
-  bpm: number;
-  dor: boolean;
-  obersavacoesDor?: string;
-  indisposição: boolean;
-  observacoes?: string;
+  pressao: string;
+  temperatura: string;
+  glicose: string;
+  oximetria: string;
+  bpm: string;
+  peso: string;
+  indisposicao: string;
+  observacao?: string;
   dataMedicao: Date;
 };
 
@@ -95,4 +93,16 @@ export type Response = {
   codigo: number;
   mensagem: string;
   conteudo: string;
+};
+
+export type Medicamento = {
+  idUsuario: string;
+  nomeMedicamento: string;
+  principioAtivo: string;
+  nomeCientifico: string;
+  periodoTomado: number;
+  intervaloDoses: number;
+  quantidadeDosesDiarias: number;
+  viaAdministracao: string;
+  observacoes: string;
 };

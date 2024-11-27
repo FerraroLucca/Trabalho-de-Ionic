@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FirebaseService } from '../services/firebase.service';
+import { Medicao } from 'src/@types';
 
 @Component({
   selector: 'app-home',
@@ -10,27 +12,34 @@ export class HomePage {
   temperatura: string = '';
   glicose: string = '';
   oximetria: string = '';
-  batimentos: string = '';
+  bpm: string = '';
   peso: string = '';
   indisposicao: string = '';
-  sentimento: string = '';
   observacao: string = '';
 
-  constructor() {}
+  constructor(private firebaseService: FirebaseService) {}
 
-  cadastrarMedicao() {
-    const dadosMedicao = {
-      pressao: this.pressao,
-      temperatura: this.temperatura,
-      glicose: this.glicose,
-      oximetria: this.oximetria,
-      batimentos: this.batimentos,
-      peso: this.peso,
-      indisposicao: this.indisposicao,
-      sentimento: this.sentimento,
-      observacao: this.observacao,
-    };
+  async cadastrarMedicao() {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
 
-    console.log('Dados do medição:', dadosMedicao);
+    if (user && user.id) {
+      const dadosMedicao: Medicao = {
+        idPaciente: user.id,
+        pressao: this.pressao,
+        temperatura: this.temperatura,
+        glicose: this.glicose,
+        oximetria: this.oximetria,
+        bpm: this.bpm,
+        peso: this.peso,
+        indisposicao: this.indisposicao,
+        observacao: this.observacao,
+        dataMedicao: new Date(),
+      };
+
+      console.log('Dados da medição:', dadosMedicao);
+      const userId = await this.firebaseService.cadastrarMedicao(dadosMedicao);
+    } else {
+      console.error('Usuário não encontrado ou id inválido');
+    }
   }
 }

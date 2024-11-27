@@ -17,6 +17,7 @@ import {
   Response,
   TipoUser,
   Usuario,
+  Medicamento,
 } from 'src/@types';
 import { environment } from '../../environments/environment';
 
@@ -32,6 +33,7 @@ export class FirebaseService {
   private collectionUsuarios = 'user';
   private collectionMedicoes = 'medicoes';
   private collectionAcompanhamento = 'acompanhamento';
+  private collectionMedicamento = 'medicacao';
 
   constructor() {}
 
@@ -81,7 +83,7 @@ export class FirebaseService {
 
       return this.criarResposta(
         200,
-        'Cadastro de paciente realizado com sucesso',
+        'Cadastro de usuário realizado com sucesso',
         `Id Paciente: ${docRef.id}`
       );
     } catch (error) {
@@ -225,16 +227,13 @@ export class FirebaseService {
         collection(this.db, this.collectionMedicoes),
         {
           idPaciente: medicao.idPaciente,
-          pressaoSistolica: medicao.pressaoSistolica,
-          pressaoDiatolica: medicao.pressaoDiatolica,
+          pressaoSistolica: medicao.pressao,
           temperatura: medicao.temperatura,
           glicose: medicao.glicose,
           oximetria: medicao.oximetria,
           bpm: medicao.bpm,
-          dor: medicao.dor,
-          obersavacoesDor: medicao.obersavacoesDor ?? '',
-          indisposição: medicao.indisposição,
-          observacoes: medicao.observacoes ?? '',
+          indisposicao: medicao.indisposicao,
+          observacoes: medicao.observacao ?? '',
           dataMedicao: medicao.dataMedicao,
         }
       );
@@ -365,6 +364,7 @@ export class FirebaseService {
   }
 
   async realizarLogin(email: string, senha: string): Promise<Response> {
+    console.log(email, senha);
     const q = query(
       collection(this.db, this.collectionUsuarios),
       where('email', '==', email)
@@ -373,14 +373,17 @@ export class FirebaseService {
 
     if (!querySnapshot.empty) {
       const userDoc = querySnapshot.docs[0];
-      const userData = userDoc.data() as Usuario;
+      var userData = userDoc.data() as Usuario;
+      userData = { id: userDoc.id, ...userData };
 
       if (userData['senha'] === senha) {
-        return this.criarResposta(200, 'Ok');
+        return this.criarResposta(200, 'Ok', userData);
       } else {
+        console.log(senha);
         return this.criarResposta(401, 'Credenciais Inválidas');
       }
     } else {
+      console.log(email);
       return this.criarResposta(401, 'Credenciais Inválidas');
     }
   }
@@ -408,5 +411,56 @@ export class FirebaseService {
       mensagem,
       conteudo,
     };
+  }
+
+  async cadastrarMedicamento(medicamento: Medicamento) {
+    try {
+      const docRef = await addDoc(
+        collection(this.db, this.collectionMedicamento),
+        {
+          idUsuario: medicamento.idUsuario,
+          nomeMedicamento: medicamento.nomeMedicamento,
+          principioAtivo: medicamento.principioAtivo,
+          nomeCientifico: medicamento.nomeCientifico,
+          periodoTomado: medicamento.periodoTomado,
+          intervaloDoses: medicamento.intervaloDoses,
+          quantidadeDosesDiarias: medicamento.quantidadeDosesDiarias,
+          viaAdministracao: medicamento.viaAdministracao,
+          observacoes: medicamento.observacoes,
+        }
+      );
+
+      return this.criarResposta(
+        200,
+        'Cadastro do medicamento realizado com sucesso',
+        `Id Medicamento: ${docRef.id}`
+      );
+    } catch (error) {
+      console.error('Erro ao cadastrar medicamento:', error);
+      return this.criarResposta(400, 'Erro ao cadastrar medicamento', error);
+    }
+  }
+
+  async buscarMedicamentosUsuario(idUsuario: string) {
+    try {
+      const q = query(
+        collection(this.db, this.collectionMedicamento),
+        where(idUsuario, '==', idUsuario)
+      );
+      const querySnapshot = await getDocs(q);
+      const medicamentos: Medicamento[] = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...(doc.data() as Medicamento),
+      }));
+
+      return this.criarResposta(
+        200,
+        'Busca realizada com sucesso',
+        medicamentos
+      );
+    } catch (error) {
+      console.error('Erro ao buscar medicamentos:', error);
+      return this.criarResposta(400, 'Erro ao buscar medicamentos', error);
+    }
   }
 }

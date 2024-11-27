@@ -4,7 +4,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Home</ion-title>
+    <ion-title>Medição</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -74,8 +74,8 @@
       <ion-input
         type="text"
         placeholder="Digite os batimentos"
-        name="batimentos"
-        [(ngModel)]="batimentos"
+        name="bpm"
+        [(ngModel)]="bpm"
       ></ion-input>
     </ion-item>
 
@@ -95,15 +95,6 @@
         placeholder="Descreva"
         name="indisposicao"
         [(ngModel)]="indisposicao"
-      ></ion-textarea>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Como está se sentindo?</ion-label>
-      <ion-textarea
-        placeholder="Descreva"
-        name="sentimento"
-        [(ngModel)]="sentimento"
       ></ion-textarea>
     </ion-item>
 
