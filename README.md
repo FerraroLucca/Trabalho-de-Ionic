@@ -53,13 +53,11 @@ Ionic CLI
 Firebase configurado com as credenciais do projeto.
 
 ##Instalação das dependências:
-
 npm install
 
-## Rodando a aplicação:
-
+## Rodando a aplicação
 ionic serve
 
-## Banco de Dados:
+## Banco de Dados
 Este projeto utiliza Firebase para autenticação e armazenamento de dados.
 Certifique-se de que o banco de dados Firebase esteja configurado conforme as instruções no arquivo firebaseConfig.js.
