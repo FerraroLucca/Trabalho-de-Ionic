@@ -24,6 +24,9 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class FirebaseService {
+  saveUsuario(usuario: Usuario) {
+    throw new Error('Method not implemented.');
+  }
   private db = getFirestore(initializeApp(environment.firebaseConfig));
   private storage = getStorage();
   private collectionUsuarios = 'user';
@@ -39,36 +42,40 @@ export class FirebaseService {
     return userList;
   }
 
-  async cadastrarPaciente(paciente: Paciente) {
+  async cadastrarUsuario(usuario: Usuario) {
     try {
-      this.validarCPF(paciente.usuario.cpf);
-      await this.verificarDadoExistente('email', paciente.usuario.email);
-      await this.verificarDadoExistente('cpf', paciente.usuario.cpf);
-      await this.verificarDadoExistente('rg', paciente.usuario.rg);
+      this.validarCPF(usuario.cpf);
+      await this.verificarDadoExistente('email', usuario.email);
+      await this.verificarDadoExistente('cpf', usuario.cpf);
+      await this.verificarDadoExistente('rg', usuario.rg);
 
       const docRef = await addDoc(
         collection(this.db, this.collectionUsuarios),
         {
-          foto: paciente.usuario.foto ?? '',
-          nome: paciente.usuario.nome,
-          email: paciente.usuario.email,
-          senha: paciente.usuario.senha,
-          tipoUser: TipoUser.PACIENTE,
-          dataDeNacimento: paciente.usuario.dataDeNacimento,
-          rg: paciente.usuario.rg,
-          cpf: paciente.usuario.cpf,
-          telefone: paciente.usuario.telefone,
-          cep: paciente.usuario.endereco.cep ?? '',
-          logradouro: paciente.usuario.endereco.logradouro,
-          numero: paciente.usuario.endereco.numero,
-          complemento: paciente.usuario.endereco.complemento ?? '',
-          bairro: paciente.usuario.endereco.bairro ?? '',
-          cidade: paciente.usuario.endereco.cidade,
-          estado: paciente.usuario.endereco.estado,
-          altura: paciente.altura,
-          peso: paciente.peso,
-          telefoneEmergencia: paciente.telefoneEmergencia,
-          motivoUsoApp: paciente.motivoUsoApp,
+          foto: usuario.foto ?? '',
+          nome: usuario.nome,
+          email: usuario.email,
+          senha: usuario.senha,
+          tipoUser: usuario.tipoUser,
+          dataDeNacimento: usuario.dataDeNacimento,
+          rg: usuario.rg,
+          cpf: usuario.cpf,
+          telefone: usuario.telefone,
+          cep: usuario.cep ?? '',
+          logradouro: usuario.logradouro,
+          numero: usuario.numero,
+          complemento: usuario.complemento ?? '',
+          bairro: usuario.bairro ?? '',
+          cidade: usuario.cidade,
+          estado: usuario.estado,
+          altura: usuario.altura ?? '',
+          peso: usuario.peso ?? '',
+          telefoneEmergencia: usuario.telefoneEmergencia ?? '',
+          motivoUsoApp: usuario.motivoUsoApp ?? '',
+          crm: usuario.crm ?? '',
+          instituicaoFormacao: usuario.instituicaoFormacao ?? '',
+          anoFormacao: usuario.anoFormacao ?? '',
+          especialidade: usuario.especialidade ?? '',
         }
       );
 
@@ -83,90 +90,134 @@ export class FirebaseService {
     }
   }
 
-  async cadastrarAcompanhante(acompanhante: Acompanhante) {
-    try {
-      this.validarCPF(acompanhante.usuario.cpf);
-      await this.verificarDadoExistente('email', acompanhante.usuario.email);
-      await this.verificarDadoExistente('cpf', acompanhante.usuario.cpf);
-      await this.verificarDadoExistente('rg', acompanhante.usuario.rg);
+  // async cadastrarPaciente(paciente: Paciente) {
+  //   try {
+  //     this.validarCPF(paciente.usuario.cpf);
+  //     await this.verificarDadoExistente('email', paciente.usuario.email);
+  //     await this.verificarDadoExistente('cpf', paciente.usuario.cpf);
+  //     await this.verificarDadoExistente('rg', paciente.usuario.rg);
 
-      const docRef = await addDoc(
-        collection(this.db, this.collectionUsuarios),
-        {
-          foto: acompanhante.usuario.foto ?? '',
-          nome: acompanhante.usuario.nome,
-          email: acompanhante.usuario.email,
-          senha: acompanhante.usuario.senha,
-          tipoUser: TipoUser.ACOMPANHANTE,
-          dataDeNacimento: acompanhante.usuario.dataDeNacimento,
-          rg: acompanhante.usuario.rg,
-          cpf: acompanhante.usuario.cpf,
-          telefone: acompanhante.usuario.telefone,
-          cep: acompanhante.usuario.endereco.cep ?? '',
-          logradouro: acompanhante.usuario.endereco.logradouro,
-          numero: acompanhante.usuario.endereco.numero,
-          complemento: acompanhante.usuario.endereco.complemento ?? '',
-          bairro: acompanhante.usuario.endereco.bairro ?? '',
-          cidade: acompanhante.usuario.endereco.cidade,
-          estado: acompanhante.usuario.endereco.estado,
-        }
-      );
+  //     const docRef = await addDoc(
+  //       collection(this.db, this.collectionUsuarios),
+  //       {
+  //         foto: paciente.usuario.foto ?? '',
+  //         nome: paciente.usuario.nome,
+  //         email: paciente.usuario.email,
+  //         senha: paciente.usuario.senha,
+  //         tipoUser: TipoUser.PACIENTE,
+  //         dataDeNacimento: paciente.usuario.dataDeNacimento,
+  //         rg: paciente.usuario.rg,
+  //         cpf: paciente.usuario.cpf,
+  //         telefone: paciente.usuario.telefone,
+  //         cep: paciente.usuario.endereco.cep ?? '',
+  //         logradouro: paciente.usuario.endereco.logradouro,
+  //         numero: paciente.usuario.endereco.numero,
+  //         complemento: paciente.usuario.endereco.complemento ?? '',
+  //         bairro: paciente.usuario.endereco.bairro ?? '',
+  //         cidade: paciente.usuario.endereco.cidade,
+  //         estado: paciente.usuario.endereco.estado,
+  //         altura: paciente.altura,
+  //         peso: paciente.peso,
+  //         telefoneEmergencia: paciente.telefoneEmergencia,
+  //         motivoUsoApp: paciente.motivoUsoApp,
+  //       }
+  //     );
 
-      return this.criarResposta(
-        200,
-        'Cadastro de acompanhante realizado com sucesso',
-        `Id Acompanhante: ${docRef.id}`
-      );
-    } catch (error) {
-      console.error('Erro ao cadastrar usuário:', error);
-      return this.criarResposta(400, 'Erro ao cadastrar usuário', error);
-    }
-  }
+  //     return this.criarResposta(
+  //       200,
+  //       'Cadastro de paciente realizado com sucesso',
+  //       `Id Paciente: ${docRef.id}`
+  //     );
+  //   } catch (error) {
+  //     console.error('Erro ao cadastrar usuário:', error);
+  //     return this.criarResposta(400, 'Erro ao cadastrar usuário', error);
+  //   }
+  // }
 
-  async cadastrarMedico(medico: Medico) {
-    try {
-      this.validarCPF(medico.usuario.cpf);
-      await this.verificarDadoExistente('cpf', medico.usuario.cpf);
-      await this.verificarDadoExistente('rg', medico.usuario.rg);
-      await this.verificarDadoExistente('email', medico.usuario.email);
-      await this.verificarDadoExistente('crm', medico.crm);
+  // async cadastrarAcompanhante(acompanhante: Acompanhante) {
+  //   try {
+  //     this.validarCPF(acompanhante.usuario.cpf);
+  //     await this.verificarDadoExistente('email', acompanhante.usuario.email);
+  //     await this.verificarDadoExistente('cpf', acompanhante.usuario.cpf);
+  //     await this.verificarDadoExistente('rg', acompanhante.usuario.rg);
 
-      const docRef = await addDoc(
-        collection(this.db, this.collectionUsuarios),
-        {
-          foto: medico.usuario.foto ?? '',
-          nome: medico.usuario.nome,
-          email: medico.usuario.email,
-          senha: medico.usuario.senha,
-          tipoUser: TipoUser.MEDICO,
-          dataDeNacimento: medico.usuario.dataDeNacimento,
-          rg: medico.usuario.rg,
-          cpf: medico.usuario.cpf,
-          telefone: medico.usuario.telefone,
-          cep: medico.usuario.endereco.cep ?? '',
-          logradouro: medico.usuario.endereco.logradouro,
-          numero: medico.usuario.endereco.numero,
-          complemento: medico.usuario.endereco.complemento ?? '',
-          bairro: medico.usuario.endereco.bairro ?? '',
-          cidade: medico.usuario.endereco.cidade,
-          estado: medico.usuario.endereco.estado,
-          crm: medico.crm,
-          instituicaoFormacao: medico.anoFormacao,
-          anoFormacao: medico.anoFormacao,
-          especialidade: medico.especialidade,
-        }
-      );
+  //     const docRef = await addDoc(
+  //       collection(this.db, this.collectionUsuarios),
+  //       {
+  //         foto: acompanhante.usuario.foto ?? '',
+  //         nome: acompanhante.usuario.nome,
+  //         email: acompanhante.usuario.email,
+  //         senha: acompanhante.usuario.senha,
+  //         tipoUser: TipoUser.ACOMPANHANTE,
+  //         dataDeNacimento: acompanhante.usuario.dataDeNacimento,
+  //         rg: acompanhante.usuario.rg,
+  //         cpf: acompanhante.usuario.cpf,
+  //         telefone: acompanhante.usuario.telefone,
+  //         cep: acompanhante.usuario.endereco.cep ?? '',
+  //         logradouro: acompanhante.usuario.endereco.logradouro,
+  //         numero: acompanhante.usuario.endereco.numero,
+  //         complemento: acompanhante.usuario.endereco.complemento ?? '',
+  //         bairro: acompanhante.usuario.endereco.bairro ?? '',
+  //         cidade: acompanhante.usuario.endereco.cidade,
+  //         estado: acompanhante.usuario.endereco.estado,
+  //       }
+  //     );
 
-      return this.criarResposta(
-        200,
-        'Cadastro de medico realizado com sucesso',
-        `Id Medico: ${docRef.id}`
-      );
-    } catch (error) {
-      console.error('Erro ao cadastrar usuário:', error);
-      return this.criarResposta(400, 'Erro ao cadastrar usuário', error);
-    }
-  }
+  //     return this.criarResposta(
+  //       200,
+  //       'Cadastro de acompanhante realizado com sucesso',
+  //       `Id Acompanhante: ${docRef.id}`
+  //     );
+  //   } catch (error) {
+  //     console.error('Erro ao cadastrar usuário:', error);
+  //     return this.criarResposta(400, 'Erro ao cadastrar usuário', error);
+  //   }
+  // }
+
+  // async cadastrarMedico(medico: Medico) {
+  //   try {
+  //     this.validarCPF(medico.usuario.cpf);
+  //     await this.verificarDadoExistente('cpf', medico.usuario.cpf);
+  //     await this.verificarDadoExistente('rg', medico.usuario.rg);
+  //     await this.verificarDadoExistente('email', medico.usuario.email);
+  //     await this.verificarDadoExistente('crm', medico.crm);
+
+  //     const docRef = await addDoc(
+  //       collection(this.db, this.collectionUsuarios),
+  //       {
+  //         foto: medico.usuario.foto ?? '',
+  //         nome: medico.usuario.nome,
+  //         email: medico.usuario.email,
+  //         senha: medico.usuario.senha,
+  //         tipoUser: TipoUser.MEDICO,
+  //         dataDeNacimento: medico.usuario.dataDeNacimento,
+  //         rg: medico.usuario.rg,
+  //         cpf: medico.usuario.cpf,
+  //         telefone: medico.usuario.telefone,
+  //         cep: medico.usuario.endereco.cep ?? '',
+  //         logradouro: medico.usuario.endereco.logradouro,
+  //         numero: medico.usuario.endereco.numero,
+  //         complemento: medico.usuario.endereco.complemento ?? '',
+  //         bairro: medico.usuario.endereco.bairro ?? '',
+  //         cidade: medico.usuario.endereco.cidade,
+  //         estado: medico.usuario.endereco.estado,
+  //         crm: medico.crm,
+  //         instituicaoFormacao: medico.anoFormacao,
+  //         anoFormacao: medico.anoFormacao,
+  //         especialidade: medico.especialidade,
+  //       }
+  //     );
+
+  //     return this.criarResposta(
+  //       200,
+  //       'Cadastro de medico realizado com sucesso',
+  //       `Id Medico: ${docRef.id}`
+  //     );
+  //   } catch (error) {
+  //     console.error('Erro ao cadastrar usuário:', error);
+  //     return this.criarResposta(400, 'Erro ao cadastrar usuário', error);
+  //   }
+  // }
 
   async cadastrarMedicao(medicao: Medicao) {
     try {

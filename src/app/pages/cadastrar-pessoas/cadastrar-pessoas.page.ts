@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Usuario } from 'src/@types';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-cadastrar-pessoas',
@@ -7,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class CadastrarPessoasPage {
   // Propriedades gerais
-  nomeCompleto: string = '';
+  nome: string = '';
   email: string = '';
   senha: string = '';
   confirmacaoSenha: string = '';
@@ -23,7 +25,7 @@ export class CadastrarPessoasPage {
   telefoneEmergencia: string = '';
   altura: number | null = null;
   peso: number | null = null;
-  motivo: string = '';
+  motivoUsoApp: string = '';
 
   // Propriedades para Médico
   CRM: string = '';
@@ -34,8 +36,6 @@ export class CadastrarPessoasPage {
   // Propriedades para Acompanhante
   relacionamento: string = '';
 
-  constructor() {}
-
   // Método para capturar a imagem enviada
   onFileChange(event: any): void {
     const file = event.target.files[0];
@@ -44,44 +44,46 @@ export class CadastrarPessoasPage {
     }
   }
 
+  constructor(private firebaseService: FirebaseService) {}
+
   // Método para cadastrar uma pessoa
-  cadastrarPessoa(): void {
-    // Validação básica de senha
+  async cadastrarUsuario() {
     if (this.senha !== this.confirmacaoSenha) {
       console.error('As senhas não coincidem.');
       return;
     }
 
     // Criando o objeto da pessoa
-    const pessoa = {
-      nomeCompleto: this.nomeCompleto,
+    const pessoa: Usuario = {
+      nome: this.nome,
       email: this.email,
       senha: this.senha,
-      dataDeNascimento: this.dataDeNascimento,
-      RG: this.RG,
-      CPF: this.CPF,
-      endereco: this.endereco,
+      dataDeNacimento: this.dataDeNascimento,
+      rg: this.RG,
+      cpf: this.CPF,
       telefone: this.telefone,
-      tipoUsuario: this.tipoUsuario,
-      foto: this.foto,
-      // Campos adicionais baseados no tipo de usuário
-      telefoneEmergencia:
-        this.tipoUsuario === 'paciente' ? this.telefoneEmergencia : null,
+      tipoUser: this.tipoUsuario,
+      telefoneEmergencia: null,
       altura: this.tipoUsuario === 'paciente' ? this.altura : null,
       peso: this.tipoUsuario === 'paciente' ? this.peso : null,
-      motivo: this.tipoUsuario === 'paciente' ? this.motivo : null,
-      CRM: this.tipoUsuario === 'medico' ? this.CRM : null,
-      instituicaoFormacao:
-        this.tipoUsuario === 'medico' ? this.instituicaoFormacao : null,
+      motivoUsoApp: null,
+      crm: null,
+      instituicaoFormacao: null,
       anoFormacao: this.tipoUsuario === 'medico' ? this.anoFormacao : null,
-      especialidade: this.tipoUsuario === 'medico' ? this.especialidade : null,
-      relacionamento:
-        this.tipoUsuario === 'acompanhante' ? this.relacionamento : null,
+      especialidade: null,
+      logradouro: '',
+      numero: 0,
+      cidade: '',
+      estado: '',
     };
 
     console.log('Dados do formulário:', pessoa);
 
-    // Lógica adicional para enviar os dados ao backend ou salvar localmente
-    // Você pode fazer uma requisição HTTP aqui, por exemplo
+    if (pessoa) {
+      const userId = await this.firebaseService.cadastrarUsuario(pessoa);
+      console.log(userId);
+    } else {
+      console.log('Please fill in both name and email fields.');
+    }
   }
 }

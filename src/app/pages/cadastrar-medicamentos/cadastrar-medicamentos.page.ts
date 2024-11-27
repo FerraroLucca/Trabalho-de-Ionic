@@ -17,7 +17,6 @@ export class CadastrarMedicamentosPage {
 
   constructor() {}
 
-  // Função chamada ao submeter o formulário
   cadastrarMedicamento() {
     const medicamento = {
       nomeMedicamento: this.nomeMedicamento,
@@ -30,7 +29,6 @@ export class CadastrarMedicamentosPage {
       observacoes: this.observacoes,
     };
 
-    // Exibe o objeto no console
     console.log('Medicamento cadastrado:', medicamento);
   }
 }

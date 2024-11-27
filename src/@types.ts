@@ -1,14 +1,29 @@
 export type Usuario = {
+  id?: string;
   foto?: string;
   nome: string;
   email: string;
   senha: string;
-  tipoUser?: TipoUser;
+  tipoUser: string;
   dataDeNacimento: string;
   rg: string;
   cpf: string;
   telefone: string;
-  endereco: Endereco;
+  altura: number | null;
+  peso: number | null;
+  telefoneEmergencia: number | null;
+  motivoUsoApp: number | null;
+  crm: number | null;
+  instituicaoFormacao: number | null;
+  anoFormacao: number | null;
+  especialidade: number | null;
+  cep?: string;
+  logradouro: string;
+  numero: number;
+  complemento?: string;
+  bairro?: string;
+  cidade: string;
+  estado: string;
 };
 
 export type TipoUser = (typeof TipoUser)[keyof typeof TipoUser];

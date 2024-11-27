@@ -28,15 +28,25 @@
 <!-- Main Content -->
 <ion-content class="ion-padding" id="main-content">
   <!-- Formulário -->
-  <form class="">
+  <form (ngSubmit)="cadastrarMedicao()">
     <ion-item>
       <ion-label position="stacked">Pressão</ion-label>
-      <ion-input type="text" placeholder="Digite os valores"></ion-input>
+      <ion-input
+        type="text"
+        placeholder="Digite os valores"
+        name="pressao"
+        [(ngModel)]="pressao"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Temperatura</ion-label>
-      <ion-input type="text" placeholder="Digite a temperatura"></ion-input>
+      <ion-input
+        type="text"
+        placeholder="Digite a temperatura"
+        name="temperatura"
+        [(ngModel)]="temperatura"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
@@ -44,6 +54,8 @@
       <ion-input
         type="text"
         placeholder="Digite os níveis de glicose"
+        name="glicose"
+        [(ngModel)]="glicose"
       ></ion-input>
     </ion-item>
 
@@ -52,36 +64,62 @@
       <ion-input
         type="text"
         placeholder="Digite os níveis de oxigênio"
+        name="oximetria"
+        [(ngModel)]="oximetria"
       ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Batimentos Cardíacos</ion-label>
-      <ion-input type="text" placeholder="Digite os batimentos"></ion-input>
+      <ion-input
+        type="text"
+        placeholder="Digite os batimentos"
+        name="batimentos"
+        [(ngModel)]="batimentos"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Peso</ion-label>
-      <ion-input type="text" placeholder="Digite o peso"></ion-input>
+      <ion-input
+        type="text"
+        placeholder="Digite o peso"
+        name="peso"
+        [(ngModel)]="peso"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Indisposição?</ion-label>
-      <ion-textarea placeholder="Descreva"></ion-textarea>
+      <ion-textarea
+        placeholder="Descreva"
+        name="indisposicao"
+        [(ngModel)]="indisposicao"
+      ></ion-textarea>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Como está se sentindo?</ion-label>
-      <ion-textarea placeholder="Descreva"></ion-textarea>
+      <ion-textarea
+        placeholder="Descreva"
+        name="sentimento"
+        [(ngModel)]="sentimento"
+      ></ion-textarea>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Observação</ion-label>
-      <ion-textarea placeholder="Digite suas observações"></ion-textarea>
+      <ion-textarea
+        placeholder="Digite suas observações"
+        name="observacao"
+        [(ngModel)]="observacao"
+      ></ion-textarea>
     </ion-item>
 
     <div class="button-container">
-      <ion-button expand="block" class="button-form"> Enviar </ion-button>
+      <ion-button expand="block" type="submit" class="button-form">
+        Enviar
+      </ion-button>
     </div>
   </form>
 </ion-content>
