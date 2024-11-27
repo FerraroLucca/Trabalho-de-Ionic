@@ -1,4 +1,5 @@
 **Projeto de Monitoramento de Pacientes**
+
 Este projeto tem como objetivo auxiliar o monitoramento de pacientes com funcionalidades como registro diário de dados, controle de medicamentos e localização em tempo real, sendo especialmente útil para pacientes com necessidades especiais como Alzheimer.
 
 Funcionalidades Principais
