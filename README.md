@@ -44,7 +44,8 @@ Acesse o Mapa pelo menu lateral para visualizar a localização em tempo real do
 Gerenciamento por Permissões
 
 Explore a aplicação com diferentes tipos de usuários para testar as funcionalidades e permissões específicas.
-Requisitos
+
+## Requisitos
 Ambiente de desenvolvimento:
 
 Node.js (versão mínima recomendada: 14.x)
