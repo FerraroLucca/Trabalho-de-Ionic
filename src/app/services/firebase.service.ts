@@ -16,7 +16,7 @@ import {
   Paciente,
   Response,
   TipoUser,
-  Usuario
+  Usuario,
 } from 'src/@types';
 import { environment } from '../../environments/environment';
 
@@ -181,16 +181,13 @@ export class FirebaseService {
           oximetria: medicao.oximetria,
           bpm: medicao.bpm,
           dor: medicao.dor,
-          obersavacoesDor: medicao.obersavacoesDor ?? "",
+          obersavacoesDor: medicao.obersavacoesDor ?? '',
           indisposição: medicao.indisposição,
-          observacoes: medicao.observacoes ?? "",
-          dataMedicao: medicao.dataMedicao
+          observacoes: medicao.observacoes ?? '',
+          dataMedicao: medicao.dataMedicao,
         }
       );
-      return this.criarResposta(
-        200,
-        'Medição armazenada com sucesso'
-      );
+      return this.criarResposta(200, 'Medição armazenada com sucesso');
     } catch (error) {
       console.error('Erro ao cadastrar medição:', error);
       return this.criarResposta(400, 'Erro ao cadastrar medição', error);
@@ -209,7 +206,7 @@ export class FirebaseService {
   }
 
   validarCPF(cpf: string) {
-    cpf = cpf.replace(/[^\d]+/g, '');  
+    cpf = cpf.replace(/[^\d]+/g, '');
 
     if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
       throw 'CPF Inválido';
@@ -240,12 +237,18 @@ export class FirebaseService {
     }
   }
 
-  async adicionarAcompanhante(idPaciente: string, cpf: string, nivelRelacionamento: string) {
+  async adicionarAcompanhante(
+    idPaciente: string,
+    cpf: string,
+    nivelRelacionamento: string
+  ) {
     this.validarCPF(cpf);
-    var idAcompanhante; 
+    var idAcompanhante;
     try {
       try {
-        idAcompanhante = (await this.getUser<Acompanhante>(TipoUser.ACOMPANHANTE, "cpf", cpf)).id;
+        idAcompanhante = (
+          await this.getUser<Acompanhante>(TipoUser.ACOMPANHANTE, 'cpf', cpf)
+        ).id;
       } catch (error) {
         return this.criarResposta(400, 'Usuário não encontrado', error);
       }
@@ -256,7 +259,7 @@ export class FirebaseService {
           idPaciente: idPaciente,
           idAcompanhante: idAcompanhante,
           dataRelacionamento: new Date(),
-          status: true
+          status: true,
         }
       );
       return this.criarResposta(200, 'Acompanhante adicionado com sucesso');
@@ -267,21 +270,21 @@ export class FirebaseService {
   }
 
   async adicionarAcompanhamentoMedico(idPaciente: string, crm: string) {
-    var idMedico; 
+    var idMedico;
     try {
       try {
-        idMedico = (await this.getUser<Medico>(TipoUser.MEDICO, "crm", crm)).id;
+        idMedico = (await this.getUser<Medico>(TipoUser.MEDICO, 'crm', crm)).id;
       } catch (error) {
         return this.criarResposta(400, 'Usuário não encontrado', error);
       }
       const docRef = await addDoc(
         collection(this.db, this.collectionAcompanhamento),
         {
-          nivelRelacionamento: "MEDICO",
+          nivelRelacionamento: 'MEDICO',
           idPaciente: idPaciente,
           idAcompanhante: idMedico,
           dataRelacionamento: new Date(),
-          status: true
+          status: true,
         }
       );
       return this.criarResposta(200, 'Acompanhante adicionado com sucesso');
@@ -291,15 +294,19 @@ export class FirebaseService {
     }
   }
 
-  async getUser<T>(tipoUsuario: TipoUser, campo: string, dado: string): Promise<T> {
+  async getUser<T>(
+    tipoUsuario: TipoUser,
+    campo: string,
+    dado: string
+  ): Promise<T> {
     const q = query(
-        collection(this.db, this.collectionUsuarios),
-        where(campo, '==', dado),
-        where('tipoUser', '==', tipoUsuario)
+      collection(this.db, this.collectionUsuarios),
+      where(campo, '==', dado),
+      where('tipoUser', '==', tipoUsuario)
     );
     const querySnapshot = await getDocs(q);
     if (querySnapshot.empty) {
-        throw new Error('Usuário não encontrado');
+      throw new Error('Usuário não encontrado');
     }
     const doc = querySnapshot.docs[0];
     const data = doc.data() as T;
@@ -307,7 +314,10 @@ export class FirebaseService {
   }
 
   async realizarLogin(email: string, senha: string): Promise<Response> {
-    const q = query(collection(this.db, this.collectionUsuarios), where('email', '==', email));
+    const q = query(
+      collection(this.db, this.collectionUsuarios),
+      where('email', '==', email)
+    );
     const querySnapshot = await getDocs(q);
 
     if (!querySnapshot.empty) {
@@ -315,12 +325,12 @@ export class FirebaseService {
       const userData = userDoc.data() as Usuario;
 
       if (userData['senha'] === senha) {
-        return this.criarResposta(200, "Ok");
+        return this.criarResposta(200, 'Ok');
       } else {
-        return this.criarResposta(401, "Credenciais Inválidas");
+        return this.criarResposta(401, 'Credenciais Inválidas');
       }
     } else {
-      return this.criarResposta(401, "Credenciais Inválidas");
+      return this.criarResposta(401, 'Credenciais Inválidas');
     }
   }
 

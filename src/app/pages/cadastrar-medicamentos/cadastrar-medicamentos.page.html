@@ -27,53 +27,90 @@
 
 <!-- Main Content -->
 <ion-content class="ion-padding" id="main-content">
-  <form class="">
+  <form (ngSubmit)="cadastrarMedicamento()">
+    <!-- Nome do Medicamento -->
     <ion-item>
       <ion-label position="stacked">Nome do Medicamento</ion-label>
-      <ion-input type="text" placeholder="Digite o nome" required></ion-input>
+      <ion-input
+        [(ngModel)]="nomeMedicamento"
+        type="text"
+        placeholder="Digite o nome"
+        name="nomeMedicamento"
+        required
+      ></ion-input>
     </ion-item>
 
+    <!-- Princípio Ativo -->
     <ion-item>
       <ion-label position="stacked">Princípio Ativo</ion-label>
       <ion-input
+        [(ngModel)]="principioAtivo"
         type="text"
         placeholder="Digite o princípio ativo"
+        name="principioAtivo"
         required
       ></ion-input>
     </ion-item>
 
+    <!-- Nome Científico -->
     <ion-item>
       <ion-label position="stacked">Nome Científico</ion-label>
       <ion-input
+        [(ngModel)]="nomeCientifico"
         type="text"
         placeholder="Digite o nome científico"
+        name="nomeCientifico"
         required
       ></ion-input>
     </ion-item>
 
+    <!-- Período que Deve Ser Tomado -->
     <ion-item>
-      <ion-label position="stacked">Período que Deve Ser Tomado</ion-label>
-      <ion-input type="text" placeholder="Ex: 7 dias" required></ion-input>
+      <ion-label position="stacked">Período a ser tomado (em dias)</ion-label>
+      <ion-input
+        [(ngModel)]="periodoTomado"
+        type="text"
+        name="periodoTomado"
+        required
+      ></ion-input>
     </ion-item>
 
+    <!-- Intervalo entre as Doses -->
     <ion-item>
-      <ion-label position="stacked">Intervalo entre as Doses</ion-label>
-      <ion-input type="text" placeholder="Ex: 8 horas" required></ion-input>
+      <ion-label position="stacked"
+        >Intervalo entre as Doses (em horas)</ion-label
+      >
+      <ion-input
+        [(ngModel)]="intervaloDoses"
+        type="text"
+        placeholder="Ex: 8 horas"
+        name="intervaloDoses"
+        required
+      ></ion-input>
     </ion-item>
 
+    <!-- Quantidade de Doses Diárias -->
     <ion-item>
       <ion-label position="stacked">Quantidade de Doses Diárias</ion-label>
       <ion-input
+        [(ngModel)]="quantidadeDosesDiarias"
         type="number"
         min="1"
         placeholder="Digite a quantidade"
+        name="quantidadeDosesDiarias"
         required
       ></ion-input>
     </ion-item>
 
+    <!-- Via de Administração -->
     <ion-item>
       <ion-label position="stacked">Via de Administração</ion-label>
-      <ion-select placeholder="Selecione uma opção" required>
+      <ion-select
+        [(ngModel)]="viaAdministracao"
+        placeholder="Selecione uma opção"
+        name="viaAdministracao"
+        required
+      >
         <ion-select-option value="oral">Oral</ion-select-option>
         <ion-select-option value="injetável">Injetável</ion-select-option>
         <ion-select-option value="tópica">Tópica</ion-select-option>
@@ -81,9 +118,14 @@
       </ion-select>
     </ion-item>
 
+    <!-- Observações -->
     <ion-item>
       <ion-label position="stacked">Observações</ion-label>
-      <ion-textarea placeholder="Digite as observações"></ion-textarea>
+      <ion-textarea
+        [(ngModel)]="observacoes"
+        name="observacoes"
+        placeholder="Digite as observações"
+      ></ion-textarea>
     </ion-item>
 
     <div class="button-container">

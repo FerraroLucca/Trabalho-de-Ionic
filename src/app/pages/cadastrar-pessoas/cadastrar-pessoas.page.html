@@ -25,14 +25,16 @@
   </ion-content>
 </ion-menu>
 
-<!-- Formulário de Cadastro de Geral -->
+<!-- Formulário de Cadastro Geral -->
 <ion-content class="ion-padding" id="main-content">
-  <form>
+  <form (ngSubmit)="cadastrarPessoa()">
     <ion-item>
       <ion-label position="stacked">Nome Completo</ion-label>
       <ion-input
         type="text"
         placeholder="Digite seu nome completo"
+        [(ngModel)]="nomeCompleto"
+        name="nomeCompleto"
         required
       ></ion-input>
     </ion-item>
@@ -42,6 +44,8 @@
       <ion-input
         type="email"
         placeholder="Digite seu e-mail"
+        [(ngModel)]="email"
+        name="email"
         required
       ></ion-input>
     </ion-item>
@@ -51,6 +55,8 @@
       <ion-input
         type="password"
         placeholder="Digite sua senha"
+        [(ngModel)]="senha"
+        name="senha"
         required
       ></ion-input>
     </ion-item>
@@ -60,20 +66,28 @@
       <ion-input
         type="password"
         placeholder="Confirme sua senha"
+        [(ngModel)]="confirmacaoSenha"
+        name="confirmacaoSenha"
         required
       ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Foto</ion-label>
-      <ion-input type="file" accept="image/*"></ion-input>
+      <ion-input
+        type="file"
+        (change)="onFileChange($event)"
+        name="foto"
+        accept="image/*"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Data de Nascimento</ion-label>
       <ion-input
         type="date"
-        placeholder="Selecione sua data de nascimento"
+        [(ngModel)]="dataDeNascimento"
+        name="dataDeNascimento"
         required
       ></ion-input>
     </ion-item>
@@ -83,6 +97,8 @@
       <ion-input
         type="text"
         placeholder="Ex: 12.345.678-9"
+        [(ngModel)]="RG"
+        name="RG"
         required
       ></ion-input>
     </ion-item>
@@ -92,6 +108,8 @@
       <ion-input
         type="text"
         placeholder="Ex: 123.456.789-00"
+        [(ngModel)]="CPF"
+        name="CPF"
         required
       ></ion-input>
     </ion-item>
@@ -101,6 +119,8 @@
       <ion-input
         type="text"
         placeholder="Digite seu endereço"
+        [(ngModel)]="endereco"
+        name="endereco"
         required
       ></ion-input>
     </ion-item>
@@ -110,99 +130,138 @@
       <ion-input
         type="tel"
         placeholder="Ex: (99) 99999-9999"
+        name="telefone"
+        [(ngModel)]="telefone"
         required
       ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Tipo de Usuário</ion-label>
-      <ion-select placeholder="Selecione um tipo" required>
+      <ion-select
+        placeholder="Selecione um tipo"
+        [(ngModel)]="tipoUsuario"
+        name="tipoUsuario"
+        required
+      >
         <ion-select-option value="paciente">Paciente</ion-select-option>
         <ion-select-option value="medico">Médico</ion-select-option>
         <ion-select-option value="acompanhante">Acompanhante</ion-select-option>
       </ion-select>
     </ion-item>
 
-    <!-- Formulário de Cadastro de Paciente -->
-    <ion-item>
-      <ion-label position="stacked">Telefone de Emergência</ion-label>
-      <ion-input
-        type="tel"
-        placeholder="Ex: (99) 99999-9999"
-        required
-      ></ion-input>
-    </ion-item>
+    <!-- Campos adicionais para Paciente -->
+    <div *ngIf="tipoUsuario === 'paciente'">
+      <ion-item>
+        <ion-label position="stacked">Telefone de Emergência</ion-label>
+        <ion-input
+          type="tel"
+          placeholder="Ex: (99) 99999-9999"
+          [(ngModel)]="telefoneEmergencia"
+          name="telefoneEmergencia"
+          required
+        ></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="stacked">Altura (cm)</ion-label>
-      <ion-input
-        type="number"
-        min="0"
-        placeholder="Ex: 170"
-        required
-      ></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Altura (cm)</ion-label>
+        <ion-input
+          type="number"
+          min="0"
+          placeholder="Ex: 170"
+          [(ngModel)]="altura"
+          name="altura"
+          required
+        ></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="stacked">Peso (kg)</ion-label>
-      <ion-input
-        type="number"
-        min="0"
-        placeholder="Ex: 70"
-        required
-      ></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Peso (kg)</ion-label>
+        <ion-input
+          type="number"
+          min="0"
+          placeholder="Ex: 70"
+          [(ngModel)]="peso"
+          name="peso"
+          required
+        ></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="stacked">Motivo para o uso do APP</ion-label>
-      <ion-input type="text" placeholder="Digite o motivo" required></ion-input>
-    </ion-item>
-
-    <!-- Formulário de Cadastro de Médico -->
-    <ion-item>
-      <ion-label position="stacked"
-        >Conselho Regional de Medicina (CRM)</ion-label
-      >
-      <ion-input
-        type="text"
-        placeholder="Digite o número do CRM"
-        required
-      ></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Ano de Formação</ion-label>
-      <ion-input
-        type="number"
-        min="1900"
-        max="2099"
-        placeholder="Ex: 2015"
-        required
-      ></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Instituição de Formação</ion-label>
-      <ion-input
-        type="text"
-        placeholder="Digite o nome da instituição"
-        required
-      ></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Especialidade</ion-label>
-      <ion-input
-        type="text"
-        placeholder="Digite sua especialidade"
-        required
-      ></ion-input>
-    </ion-item>
-
-    <div class="button-container">
-      <ion-button expand="block" class="button-form" type="submit"
-        >Cadastrar Pessoa</ion-button
-      >
+      <ion-item>
+        <ion-label position="stacked">Motivo para o uso do APP</ion-label>
+        <ion-input
+          type="text"
+          placeholder="Digite o motivo"
+          name="motivo"
+          [(ngModel)]="motivo"
+          required
+        ></ion-input>
+      </ion-item>
     </div>
+
+    <!-- Campos adicionais para Médico -->
+    <div *ngIf="tipoUsuario === 'medico'">
+      <ion-item>
+        <ion-label position="stacked">CRM</ion-label>
+        <ion-input
+          type="text"
+          name="CRM"
+          placeholder="Digite o CRM"
+          [(ngModel)]="CRM"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Instituição de Formação</ion-label>
+        <ion-input
+          type="text"
+          placeholder="Digite a instituição"
+          name="instituicaoFormacao"
+          [(ngModel)]="instituicaoFormacao"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Ano de Formação</ion-label>
+        <ion-input
+          type="number"
+          placeholder="Digite o ano"
+          name="anoFormacao"
+          [(ngModel)]="anoFormacao"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Especialidade</ion-label>
+        <ion-input
+          type="text"
+          placeholder="Digite a especialidade"
+          name="especialidade"
+          [(ngModel)]="especialidade"
+          required
+        ></ion-input>
+      </ion-item>
+    </div>
+
+    <!-- Campos adicionais para Acompanhante -->
+    <div *ngIf="tipoUsuario === 'acompanhante'">
+      <ion-item>
+        <ion-label position="stacked">Relacionamento com Paciente</ion-label>
+        <ion-input
+          type="text"
+          placeholder="Ex: Parente, Amigo"
+          name="relacionamento"
+          [(ngModel)]="relacionamento"
+          required
+        ></ion-input>
+      </ion-item>
+    </div>
+
+    <ion-button expand="block" class="button-form" type="submit"
+      >Cadastrar</ion-button
+    >
   </form>
 </ion-content>
