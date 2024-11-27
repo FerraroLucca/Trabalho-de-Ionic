@@ -25,7 +25,7 @@ Pacientes: Podem registrar suas informações e consultar suas próprias mediç�
 Acompanhantes: Podem monitorar informações específicas e localização do paciente.
 
 
-**Passo a Passo para Utilização**
+## **Passo a Passo para Utilização**
 
 Login
 
