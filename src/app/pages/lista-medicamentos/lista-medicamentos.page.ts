@@ -23,11 +23,12 @@ export class ListaMedicamentosPage implements OnInit {
     this.erro = null;
 
     try {
-      const user = JSON.parse(localStorage.getItem('idUsuario') || '{}');
+      const user = JSON.parse(localStorage.getItem('user') || '{}');
 
       const resposta = await this.firebaseService.buscarMedicamentosUsuario(
-        user
+        user.id
       );
+      console.log('a:', user);
       console.log('Resposta do serviço:', resposta); // Verifique a resposta
 
       if (resposta?.codigo === 200 && resposta.conteudo) {

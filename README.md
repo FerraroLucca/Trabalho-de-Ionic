@@ -1,59 +1,55 @@
-# Trabalho-de-Ionic
+Projeto de Monitoramento de Pacientes
+Este projeto tem como objetivo auxiliar o monitoramento de pacientes com funcionalidades como registro diário de dados, controle de medicamentos e localização em tempo real, sendo especialmente útil para pacientes com necessidades especiais como Alzheimer.
 
-Saúde e Bem Estar da OMS
+Funcionalidades Principais
+Login e Cadastro
 
-Features
+O professor deve iniciar criando um novo cadastro.
+Após o cadastro, será direcionado automaticamente para a página de medição diária.
+Medição Diária
 
-- Alarme para remédios
-- Notificação para lembrar de preencher as listas
+Registro de dados diários do paciente, como sinais vitais e outras informações relevantes.
+Menu de Funcionalidades
 
-Telas:
+Cadastro de Medicamentos: Adicione os medicamentos que o paciente está tomando.
+Listagem de Medicamentos: Visualize todos os medicamentos cadastrados.
+Mapa em Tempo Real: Acompanhe a localização do paciente para situações de emergência.
+Acessos Personalizados
 
-- Login
-- Cadastre-se
-- Home - Relatório/Dashboard/Gráficos
-- Perfil
-- Cadastrar dados (Informações - pressão, temperatura etc etc etc)
-- Listar dados
-- Cadastrar Usuário
-- Listar Pessoas
-- Cadastrar Medicamentos
-- Listar Medicamentos
-- Mapa com a localização dos outros
+Usuários diferentes possuem acessos e permissões específicos:
+Médicos: Podem visualizar e gerenciar dados de vários pacientes.
+Pacientes: Podem registrar suas informações e consultar suas próprias medições.
+Acompanhantes: Podem monitorar informações específicas e localização do paciente.
+Passo a Passo para Utilização
+Login
 
-Cadastre-se:
-Nome
-Email
-Senha
-Tipo de usuário
+Acesse a aplicação e clique em Criar Conta.
+Insira as informações solicitadas para criar o perfil.
+Medição Diária
 
-Cadastro de Usuário:
-Foto
-dt. Nascimento
-RG
-CPF
-Endereço
-Telefone de contato
-Telefone de Emergência
-Intervalo de registros de dados
-Motivo para uso do App
-Altura
-Peso
+Após o login, registre os dados diários do paciente na página inicial.
+Cadastro e Listagem de Medicamentos
 
-Cadastro de Medicamentos:
-Nome do Medicamento
-"Principio ativo" - nome científico do remédio
-Peíodo que deve ser tomado
-Intervalo entre as doses
+No menu lateral, escolha Cadastro de Medicamentos para adicionar um novo medicamento.
+Para visualizar, clique em Listar Medicamentos.
+Mapa em Tempo Real
 
-Cadastro de Dados:
-Pressão
-Temperatura
-Glicose
-Oximetria
-Batimentos Cardiacos
-Peso periódicamente (1 vez por mês)
-Alguma dor?
-Indisposição?
-Como está se sentindo?
-Observação?
+Acesse o Mapa pelo menu lateral para visualizar a localização em tempo real do paciente.
+Gerenciamento por Permissões
+
+Explore a aplicação com diferentes tipos de usuários para testar as funcionalidades e permissões específicas.
+Requisitos
+Ambiente de desenvolvimento:
+
+Node.js (versão mínima recomendada: 14.x)
+Ionic CLI
+Firebase configurado com as credenciais do projeto.
+Instalação das dependências:
+
+npm install
+Rodando a aplicação:
+
+ionic serve
+Banco de Dados
+Este projeto utiliza Firebase para autenticação e armazenamento de dados.
+Certifique-se de que o banco de dados Firebase esteja configurado conforme as instruções no arquivo firebaseConfig.js.

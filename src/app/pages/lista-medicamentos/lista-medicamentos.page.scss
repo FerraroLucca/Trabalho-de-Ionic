@@ -1,28 +1,50 @@
+/* Estilização da tabela de medicamentos */
 .medicamentos-tabela {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
+  background-color: #ffffff; /* Fundo branco para contraste */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+  border-radius: 8px; /* Bordas arredondadas */
+  overflow: hidden; /* Para manter o arredondamento */
 }
 
 .medicamentos-tabela th,
 .medicamentos-tabela td {
-  border: 1px solid #ccc;
-  padding: 8px;
+  border: 1px solid #ddd; /* Bordas discretas */
+  padding: 12px; /* Maior espaçamento para melhor leitura */
   text-align: left;
+  font-size: 14px; /* Fonte consistente */
+  color: #333333; /* Texto em cinza escuro */
 }
 
 .medicamentos-tabela th {
-  background-color: #f4f4f4;
+  background-color: #f8f9fa; /* Tom neutro para cabeçalho */
+  font-weight: bold;
+  text-transform: uppercase; /* Texto em maiúsculas */
+  letter-spacing: 0.05em; /* Melhor espaçamento entre letras */
 }
 
+.medicamentos-tabela tr:nth-child(even) {
+  background-color: #f4f4f4; /* Zebra stripe em linhas pares */
+}
+
+.medicamentos-tabela tr:hover {
+  background-color: #e9ecef; /* Efeito hover para interatividade */
+}
+
+/* Estilização da mensagem de erro */
 .erro {
-  color: red;
+  color: #ff4d4d; /* Vermelho mais vibrante */
   font-weight: bold;
   text-align: center;
+  margin-top: 10px;
 }
 
+/* Estilização para quando não há dados */
 .nenhum-dado {
   text-align: center;
   font-style: italic;
-  color: #666;
+  color: #888888; /* Tom cinza mais claro */
+  margin-top: 15px;
 }

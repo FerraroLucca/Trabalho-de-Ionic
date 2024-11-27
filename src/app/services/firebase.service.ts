@@ -369,6 +369,7 @@ export class FirebaseService {
       collection(this.db, this.collectionUsuarios),
       where('email', '==', email)
     );
+
     const querySnapshot = await getDocs(q);
 
     if (!querySnapshot.empty) {
@@ -449,16 +450,22 @@ export class FirebaseService {
       );
 
       const querySnapshot = await getDocs(q);
-      const medicamentos: Medicamento[] = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...(doc.data() as Medicamento),
-      }));
 
-      return this.criarResposta(
-        200,
-        'Busca realizada com sucesso',
-        medicamentos
-      );
+      if (!querySnapshot.empty) {
+        const medicamentos: Medicamento[] = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...(doc.data() as Medicamento),
+        }));
+
+        console.log('id da firebase', idUsuario);
+        return this.criarResposta(
+          200,
+          'Busca realizada com sucesso',
+          medicamentos
+        );
+      } else {
+        return this.criarResposta(404, 'Nenhum medicamento encontrado.');
+      }
     } catch (error) {
       console.error('Erro ao buscar medicamentos:', error);
       return this.criarResposta(400, 'Erro ao buscar medicamentos', error);
