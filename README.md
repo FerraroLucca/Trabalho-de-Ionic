@@ -61,3 +61,11 @@ ionic serve
 ## Banco de Dados
 Este projeto utiliza Firebase para autenticação e armazenamento de dados.
 Certifique-se de que o banco de dados Firebase esteja configurado conforme as instruções no arquivo firebaseConfig.js.
+
+##Créditos
+Este projeto foi desenvolvido por:
+- Anderson Coelho
+- Gabriel Lucca
+- Gustavo Nicacio
+- Otavio Oliveira
+- Ysadora Vilela
