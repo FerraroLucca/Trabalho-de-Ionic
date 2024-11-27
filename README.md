@@ -5,7 +5,7 @@ Este projeto foi desenvolvido com base no Objetivo de Desenvolvimento Sustentáv
 ## Funcionalidades Principais
 Login e Cadastro
 
-O professor deve iniciar criando um novo cadastro.
+Deve-se iniciar criando um novo cadastro.
 Após o cadastro, será direcionado automaticamente para a página de medição diária.
 Medição Diária
 
