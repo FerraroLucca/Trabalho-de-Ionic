@@ -1,6 +1,6 @@
 # Projeto de Monitoramento de Pacientes
 
-Este projeto tem como objetivo auxiliar o monitoramento de pacientes com funcionalidades como registro diário de dados, controle de medicamentos e localização em tempo real, sendo especialmente útil para pacientes com necessidades especiais como Alzheimer.
+Este projeto foi desenvolvido com base no Objetivo de Desenvolvimento Sustentável (ODS) nº 3: Saúde e Bem-Estar, que visa assegurar uma vida saudável e promover o bem-estar para todos, em todas as idades. O monitoramento de pacientes, especialmente aqueles com condições como Alzheimer, contribui diretamente para melhorar a qualidade de vida e os cuidados de saúde, permitindo intervenções mais rápidas e eficazes. Além disso, a personalização de acessos e a funcionalidade de localização em tempo real garantem maior segurança e acompanhamento contínuo para os pacientes e seus cuidadores.
 
 ## Funcionalidades Principais
 Login e Cadastro
